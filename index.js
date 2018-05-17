@@ -1,12 +1,12 @@
 /*!
- * emiton
- * https://github.com/PengJiyuan/emiton
+ * emitry
+ * https://github.com/PengJiyuan/emitry
  *
  * Copyright (c) 2018 PengJiyuan
  * Licensed under the MIT license.
  */
 
-class Emiton {
+class Emitry {
 
   constructor() {
     this.list = {};
@@ -45,4 +45,4 @@ class Emiton {
 
 }
 
-export default Emiton;
+export default Emitry;

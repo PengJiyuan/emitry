@@ -4,8 +4,8 @@ export default {
   input: './index.js',
   output: {
     format: 'umd',
-    name: 'Emiton',
-    file: './emiton.umd.js'
+    name: 'Emitry',
+    file: './emitry.umd.js'
   },
   plugins: [
     buble()

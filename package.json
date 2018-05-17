@@ -1,9 +1,9 @@
 {
-  "name": "emiton",
-  "version": "1.0.0",
+  "name": "emitry",
+  "version": "1.0.1",
   "description": "Event emit and catch",
-  "main": "emiton.umd.js",
-  "module": "emiton.umd.js",
+  "main": "emitry.umd.js",
+  "module": "emitry.umd.js",
   "scripts": {
     "build": "rollup -c rollup.config.js",
     "dev": "rollup -c rollup.config.js -w",

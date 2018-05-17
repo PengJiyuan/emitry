@@ -1,30 +1,30 @@
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
-  (global.Emiton = factory());
+  (global.Emitry = factory());
 }(this, (function () { 'use strict';
 
   /*!
-   * emiton
-   * https://github.com/PengJiyuan/emiton
+   * emitry
+   * https://github.com/PengJiyuan/emitry
    *
    * Copyright (c) 2018 PengJiyuan
    * Licensed under the MIT license.
    */
 
-  var Emiton = function Emiton() {
+  var Emitry = function Emitry() {
     this.list = {};
   };
 
-  Emiton.prototype.has = function has (key) {
+  Emitry.prototype.has = function has (key) {
     return ~Object.keys(this.list).indexOf(key);
   };
 
-  Emiton.prototype.isArray = function isArray (array) {
+  Emitry.prototype.isArray = function isArray (array) {
     return Object.prototype.toString.call(array) === '[object Array]';
   };
 
-  Emiton.prototype.emit = function emit (name) {
+  Emitry.prototype.emit = function emit (name) {
       var data = [], len = arguments.length - 1;
       while ( len-- > 0 ) data[ len ] = arguments[ len + 1 ];
 
@@ -33,16 +33,16 @@
     }
   };
 
-  Emiton.prototype.on = function on (name, callback) {
+  Emitry.prototype.on = function on (name, callback) {
     this.has(name) && callback.apply(void 0, this.list[name]);
   };
 
-  Emiton.prototype.once = function once (name, callback) {
+  Emitry.prototype.once = function once (name, callback) {
     this.has(name) && callback.apply(void 0, this.list[name]);
     this.has(name) && delete this.list[name];
   };
 
-  Emiton.prototype.off = function off (names) {
+  Emitry.prototype.off = function off (names) {
       var this$1 = this;
 
     if(this.isArray(names)) {
@@ -52,6 +52,6 @@
     }
   };
 
-  return Emiton;
+  return Emitry;
 
 })));
