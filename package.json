@@ -1,0 +1,26 @@
+{
+  "name": "emiton",
+  "version": "1.0.0",
+  "description": "Event emit and catch",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PengJiyuan/emiton.git"
+  },
+  "keywords": [
+    "event",
+    "emit",
+    "on",
+    "off",
+    "catch"
+  ],
+  "author": "PengJiyuan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PengJiyuan/emiton/issues"
+  },
+  "homepage": "https://github.com/PengJiyuan/emiton#readme"
+}
