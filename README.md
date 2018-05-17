@@ -32,21 +32,13 @@ const emitry = new Emitry();
 
 ## Api
 
-#### emit(name, value1, value2, ...)
-
-Emit an event.
-
-```javascript
-emitry.emit('oh', 'my god', 'my dear');
-```
-
 #### on(name, (value1, value2, ...) => {})
 
 Subscribe to an event.
 
 ```javascript
 emitry.on('oh', (value1, value2) => {
-  console.log(value1, value2); // 'mygod' 'my dear
+  console.log(value1, value2);
 });
 ```
 
@@ -56,8 +48,16 @@ Subscribe to an event. Only trigger once, after triggered will remove from event
 
 ```javascript
 emitry.once('oh', (value1, value2) => {
-  console.log(value1, value2); // 'mygod' 'my dear
+  console.log(value1, value2);
 });
+```
+
+#### emit(name, value1, value2, ...)
+
+Emit an event.
+
+```javascript
+emitry.emit('oh', 'my god', 'my dear');  // 'mygod' 'my dear
 ```
 
 #### off([names])
@@ -65,9 +65,6 @@ emitry.once('oh', (value1, value2) => {
 Remove specify events by a list of names.
 
 ```javascript
-emitry.on('a', 'haha', 'ddddd');
-emitry.on('b', 'fdsf', 'fasfdsa');
-
 emitry.off(['a', 'b']);
 ```
 
