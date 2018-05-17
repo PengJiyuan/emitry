@@ -21,18 +21,25 @@ class Emitry {
   }
 
   emit(name, ...data) {
-    if(!this.has(name)) {
-      this.list[name] = [...data];
-    }
+    this.list[name] && this.list[name].callback(...data);
+    this.list[name] && this.list[name].once && delete this.list[name];
   }
 
   on(name, callback) {
-    this.has(name) && callback(...this.list[name]);
+    if(!this.has(name)) {
+      this.list[name] = {
+        callback: callback
+      };
+    };
   }
 
   once(name, callback) {
-    this.has(name) && callback(...this.list[name]);
-    this.has(name) && delete this.list[name];
+    if(!this.has(name)) {
+      this.list[name] = {
+        once: true,
+        callback: callback
+      };
+    }
   }
 
   off(names) {
