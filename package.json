@@ -8,7 +8,8 @@
     "build": "rollup -c rollup.config.js",
     "build-min": "npm run build --min",
     "dev": "rollup -c rollup.config.js -w",
-    "test": "jest"
+    "test": "jest",
+    "add": "git add ."
   },
   "repository": {
     "type": "git",
@@ -37,6 +38,7 @@
   "pre-commit": [
     "build",
     "build-min",
+    "add",
     "test"
   ]
 }
