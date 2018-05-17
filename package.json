@@ -36,6 +36,7 @@
   },
   "pre-commit": [
     "build",
-    "build-min"
+    "build-min",
+    "test"
   ]
 }
