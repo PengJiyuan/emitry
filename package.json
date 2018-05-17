@@ -2,9 +2,10 @@
   "name": "emiton",
   "version": "1.0.0",
   "description": "Event emit and catch",
-  "main": "index.js",
+  "main": "emiton.umd.js",
+  "module": "emiton.umd.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rollup -c rollup.config.js"
   },
   "repository": {
     "type": "git",
@@ -22,5 +23,9 @@
   "bugs": {
     "url": "https://github.com/PengJiyuan/emiton/issues"
   },
-  "homepage": "https://github.com/PengJiyuan/emiton#readme"
+  "homepage": "https://github.com/PengJiyuan/emiton#readme",
+  "devDependencies": {
+    "rollup": "^0.59.1",
+    "rollup-plugin-buble": "^0.19.2"
+  }
 }
