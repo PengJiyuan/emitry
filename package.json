@@ -2,12 +2,14 @@
   "name": "emitry",
   "version": "1.1.0",
   "description": "Event emit and catch",
-  "main": "./lib/emitry.umd.js",
-  "module": "./lib/emitry.umd.js",
+  "main": "./lib/emitry.es.js",
+  "module": "./lib/emitry.es.js",
   "scripts": {
-    "build": "rollup -c rollup.config.js",
-    "build-min": "npm run build --min",
-    "dev": "rollup -c rollup.config.js -w",
+    "build-es": "rollup -c -f es -o ./lib/emitry.es.js",
+    "build-es-min": "rollup -c -f es -o ./lib/emitry.es.min.js --environment min",
+    "build-umd": "rollup -c -f umd -n Emitry -o ./lib/emitry.umd.js",
+    "build-umd-min": "rollup -c -f umd -n Emitry -o ./lib/emitry.umd.min.js --environment min",
+    "dev": "rollup -c -f umd -n Emitry -o ./lib/emitry.umd.js -w",
     "test": "jest",
     "add": "git add ."
   },
@@ -36,8 +38,10 @@
     "rollup-plugin-butternut": "^0.1.0"
   },
   "pre-commit": [
-    "build",
-    "build-min",
+    "build-es",
+    "build-es-min",
+    "build-umd",
+    "build-umd-min",
     "add",
     "test"
   ]
