@@ -55,7 +55,7 @@ class Emitry {
     if(this.isArray(names)) {
       names.forEach(name => delete this.list[name]);
     } else {
-      this.list = {};
+      this.list = Object.create(null);
     }
   }
 
