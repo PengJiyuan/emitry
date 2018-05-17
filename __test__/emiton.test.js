@@ -1,4 +1,4 @@
-const Emitry = require('../emitry.umd.js');
+const Emitry = require('../lib/emitry.umd.js');
 
 const emitry = new Emitry();
 

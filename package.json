@@ -2,10 +2,11 @@
   "name": "emitry",
   "version": "1.0.1",
   "description": "Event emit and catch",
-  "main": "emitry.umd.js",
-  "module": "emitry.umd.js",
+  "main": "./lib/emitry.umd.js",
+  "module": "./lib/emitry.umd.js",
   "scripts": {
     "build": "rollup -c rollup.config.js",
+    "build-min": "npm run build --min",
     "dev": "rollup -c rollup.config.js -w",
     "test": "jest"
   },
@@ -28,7 +29,13 @@
   "homepage": "https://github.com/PengJiyuan/emiton#readme",
   "devDependencies": {
     "jest": "^22.4.3",
+    "pre-commit": "^1.2.2",
     "rollup": "^0.59.1",
-    "rollup-plugin-buble": "^0.19.2"
-  }
+    "rollup-plugin-buble": "^0.19.2",
+    "rollup-plugin-butternut": "^0.1.0"
+  },
+  "pre-commit": [
+    "build",
+    "build-min"
+  ]
 }
