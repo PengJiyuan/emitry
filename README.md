@@ -3,7 +3,7 @@ simple event emitter.
 
 ## Why emitry?
 
-* **Small** - The source code is less than 100 lines. After minified and gzipped, only 390B.
+* **Small** - The source code is less than 100 lines. After minified and gzipped, only 450B.
 * **Simple** - Only 4 api, but it can solve most of the scenes.
 * **Cross platform** - It can work on nodejs, browser...
 
