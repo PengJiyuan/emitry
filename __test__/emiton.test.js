@@ -21,13 +21,16 @@ test('test function emitry.on <Multi>', () => {
 
 test('test function emitry.once()', () => {
   const mockFn = jest.fn();
+  const mockFn2 = jest.fn();
 
-  emitry.once('once', mockFn);
+  emitry.on('once', mockFn)
+  emitry.once('once', mockFn2);
 
-  emitry.emit('once', mockFn);
-  emitry.emit('once', mockFn);
+  emitry.emit('once', 'aaa');
+  emitry.emit('once', 'aaa');
 
-  expect(mockFn.mock.calls.length).toBe(1);
+  expect(mockFn.mock.calls.length).toBe(2);
+  expect(mockFn2.mock.calls.length).toBe(1);
 });
 
 test('test function emitry.off<Array>', () => {
@@ -38,18 +41,14 @@ test('test function emitry.off<Array>', () => {
 
   emitry.off(['x', 'y']);
 
-  emitry.emit('x', mockFn);
-  emitry.emit('y', mockFn);
+  emitry.emit('x', 'hahaha');
+  emitry.emit('y', 'hahaha');
 
   expect(mockFn.mock.calls.length).toBe(0);
 });
 
 test('test function emitry.off<All>', () => {
-  const mockFn = jest.fn();
-
   emitry.off();
 
-  emitry.emit('multi', mockFn);
-
-  expect(mockFn.mock.calls.length).toBe(0);
+  expect(emitry.list).toEqual({});
 });

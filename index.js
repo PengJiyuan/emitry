@@ -9,7 +9,7 @@
 class Emitry {
 
   constructor() {
-    this.list = {};
+    this.list = Object.create(null);
   }
 
   has(key) {
@@ -21,25 +21,34 @@ class Emitry {
   }
 
   emit(name, ...data) {
-    this.list[name] && this.list[name].callback(...data);
-    this.list[name] && this.list[name].once && delete this.list[name];
+    this.list[name] && this.list[name].forEach((e, i) => {
+      e.callback(...data);
+      if(e.once) {
+        this.list[name].splice(i--, 1);
+      }
+    });
+    if(this.list[name] && this.list[name].length === 0) {
+      delete this.list[name];
+    }
   }
 
   on(name, callback) {
     if(!this.has(name)) {
-      this.list[name] = {
-        callback: callback
-      };
-    };
+      this.list[name] = [];
+    }
+    this.list[name].push({
+      callback: callback
+    });
   }
 
   once(name, callback) {
     if(!this.has(name)) {
-      this.list[name] = {
-        once: true,
-        callback: callback
-      };
+      this.list[name] = [];
     }
+    this.list[name].push({
+      once: true,
+      callback: callback
+    });
   }
 
   off(names) {
