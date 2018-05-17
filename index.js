@@ -1,3 +1,11 @@
+/*!
+ * emiton
+ * https://github.com/PengJiyuan/emiton
+ *
+ * Copyright (c) 2018 PengJiyuan
+ * Licensed under the MIT license.
+ */
+
 class Emiton {
 
   constructor() {
@@ -9,17 +17,22 @@ class Emiton {
   }
 
   isArray(array) {
-    return Obejct.prototype.toString.call(array) === '[object Array]';
+    return Object.prototype.toString.call(array) === '[object Array]';
   }
 
-  emit(name, data) {
+  emit(name, ...data) {
     if(!this.has(name)) {
-      this.list[name] = data
+      this.list[name] = [...data];
     }
   }
 
   on(name, callback) {
-    this.has(name) && callback(this.list[name]);
+    this.has(name) && callback(...this.list[name]);
+  }
+
+  once(name, callback) {
+    this.has(name) && callback(...this.list[name]);
+    this.has(name) && delete this.list[name];
   }
 
   off(names) {
