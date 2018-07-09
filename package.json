@@ -11,7 +11,8 @@
     "build-umd-min": "rollup -c -f umd -n Emitry -o ./lib/emitry.umd.min.js --environment min",
     "dev": "rollup -c -f umd -n Emitry -o ./lib/emitry.umd.js -w",
     "test": "jest",
-    "add": "git add ."
+    "add": "git add .",
+    "release": "relix"
   },
   "repository": {
     "type": "git",
@@ -33,6 +34,7 @@
   "devDependencies": {
     "jest": "^22.4.3",
     "pre-commit": "^1.2.2",
+    "relix": "^1.0.0",
     "rollup": "^0.59.1",
     "rollup-plugin-buble": "^0.19.2",
     "rollup-plugin-butternut": "^0.1.0"
