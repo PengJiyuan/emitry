@@ -40,7 +40,7 @@ class Emitry {
       this.list[name] = [];
     }
     this.list[name].push({
-      callback: callback
+      callback
     });
   }
 
@@ -50,7 +50,7 @@ class Emitry {
     }
     this.list[name].push({
       once: true,
-      callback: callback
+      callback
     });
   }
 
