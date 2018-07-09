@@ -1,15 +1,16 @@
 const Emitry = require('../lib/emitry.umd.js');
 
-const emitry = new Emitry();
-
 test('test function emitry.on()', () => {
+  const emitry = new Emitry();
   emitry.on('a', value => {
     expect(value).toEqual({a: 'this is a!'});
   });
   emitry.emit('a', {a: 'this is a!'});
+  emitry.off();
 });
 
-test('test function emitry.on <Multi>', () => {
+test('test function emitry.on(...array)', () => {
+  const emitry = new Emitry();
   emitry.on('multi', (value1, value2, value3) => {
     expect(value1).toBe('html');
     expect(value2).toBe('css');
@@ -17,9 +18,11 @@ test('test function emitry.on <Multi>', () => {
   });
 
   emitry.emit('multi', 'html', 'css', 'js');
+  emitry.off();
 });
 
 test('test function emitry.once()', () => {
+  const emitry = new Emitry();
   const mockFn = jest.fn();
   const mockFn2 = jest.fn();
 
@@ -31,9 +34,11 @@ test('test function emitry.once()', () => {
 
   expect(mockFn.mock.calls.length).toBe(2);
   expect(mockFn2.mock.calls.length).toBe(1);
+  emitry.off();
 });
 
 test('test function emitry.off<Array>', () => {
+  const emitry = new Emitry();
   const mockFn = jest.fn();
 
   emitry.on('x', mockFn);
@@ -48,7 +53,31 @@ test('test function emitry.off<Array>', () => {
 });
 
 test('test function emitry.off<All>', () => {
+  const emitry = new Emitry();
+  const mockFn = jest.fn();
+
+  emitry.on('x', mockFn);
+  emitry.on('y', mockFn);
+
   emitry.off();
 
-  expect(emitry.list).toEqual({});
+  emitry.emit('x', 'hahaha');
+  emitry.emit('y', 'hahaha');
+
+  expect(mockFn.mock.calls.length).toBe(0);
+});
+
+test('test complex scene', () => {
+  const emitry = new Emitry();
+  const mockFn = jest.fn();
+
+  emitry.on('x', mockFn);
+  emitry.once('x', mockFn);
+  emitry.once('x', mockFn);
+  emitry.on('x', mockFn);
+
+  emitry.emit('x', 'hahaha');
+  emitry.emit('x', 'hahaha');
+
+  expect(mockFn.mock.calls.length).toBe(6);
 });

@@ -21,14 +21,17 @@ class Emitry {
   }
 
   emit(name, ...data) {
-    this.list[name] && this.list[name].forEach((e, i) => {
-      e.callback(...data);
-      if(e.once) {
-        this.list[name].splice(i--, 1);
+    if (this.list[name]) {
+      for (let i = 0; i < this.list[name].length; i++) {
+        const e = this.list[name][i];
+        e.callback(...data);
+        if(e.once) {
+          this.list[name].splice(i--, 1);
+        }
       }
-    });
-    if(this.list[name] && this.list[name].length === 0) {
-      delete this.list[name];
+      if(this.list[name] && this.list[name].length === 0) {
+        delete this.list[name];
+      }
     }
   }
 
