@@ -1,3 +1,7 @@
+[![Travis](https://img.shields.io/travis/PengJiyuan/emitry.svg)](https://travis-ci.org/PengJiyuan/emitry)
+[![npm](https://img.shields.io/npm/v/emitry.svg)](https://www.npmjs.com/package/emitry)
+[![npm](https://img.shields.io/npm/l/emitry.svg)](https://www.npmjs.com/package/emitry)
+
 # emitry
 simple event emitter.
 
