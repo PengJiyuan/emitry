@@ -1,4 +1,4 @@
-const Emitry = require('../lib/emitry.umd.js');
+const Emitry = require('../lib/emitry.cjs.js');
 
 test('test function emitry.on()', () => {
   const emitry = new Emitry();
@@ -24,16 +24,13 @@ test('test function emitry.on(...array)', () => {
 test('test function emitry.once()', () => {
   const emitry = new Emitry();
   const mockFn = jest.fn();
-  const mockFn2 = jest.fn();
 
-  emitry.on('once', mockFn)
-  emitry.once('once', mockFn2);
+  emitry.once('once', mockFn);
 
   emitry.emit('once', 'aaa');
   emitry.emit('once', 'aaa');
 
-  expect(mockFn.mock.calls.length).toBe(2);
-  expect(mockFn2.mock.calls.length).toBe(1);
+  expect(mockFn.mock.calls.length).toBe(1);
   emitry.off();
 });
 

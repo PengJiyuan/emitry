@@ -2,13 +2,12 @@
   "name": "emitry",
   "version": "1.2.1",
   "description": "Event emit and catch",
-  "main": "./lib/emitry.es.js",
+  "main": "./lib/emitry.cjs.js",
   "module": "./lib/emitry.es.js",
   "scripts": {
     "build-es": "rollup -c -f es -o ./lib/emitry.es.js",
-    "build-es-min": "rollup -c -f es -o ./lib/emitry.es.min.js --environment min",
-    "build-umd": "rollup -c -f umd -n Emitry -o ./lib/emitry.umd.js",
     "build-umd-min": "rollup -c -f umd -n Emitry -o ./lib/emitry.umd.min.js --environment min",
+    "build-cjs": "rollup -c -f cjs -o ./lib/emitry.cjs.js",
     "dev": "rollup -c -f umd -n Emitry -o ./lib/emitry.umd.js -w",
     "test": "jest",
     "add": "git add .",
@@ -32,6 +31,7 @@
   },
   "homepage": "https://github.com/PengJiyuan/emiton#readme",
   "devDependencies": {
+    "codecov": "^3.0.4",
     "jest": "^22.4.3",
     "pre-commit": "^1.2.2",
     "relix": "^1.0.0",
@@ -41,10 +41,13 @@
   },
   "pre-commit": [
     "build-es",
-    "build-es-min",
-    "build-umd",
+    "build-cjs",
     "build-umd-min",
     "add",
     "test"
-  ]
+  ],
+  "jest": {
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true
+  }
 }
