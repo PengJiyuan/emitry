@@ -6,7 +6,7 @@ install:
   - npm install
 script:
   - npm run build-es
-  - npm run build-es-min
-  - npm run build-umd
+  - npm run build-cjs
   - npm run build-umd-min
   - npm run test
+  - codecov
