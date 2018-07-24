@@ -65,6 +65,16 @@ Emit an event.
 emitry.emit('oh', 'my god', 'my dear');  // 'mygod' 'my dear
 ```
 
+#### off(name, callback)
+
+Remove a listener from the listener array for the specified event.
+
+```javascript
+emitry.off('oh', (value1, value2) => {
+  console.log(value1, value2);
+});
+```
+
 #### off([names])
 
 Remove specify events by a list of names.
