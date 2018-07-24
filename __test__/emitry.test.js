@@ -34,6 +34,24 @@ test('test function emitry.once()', () => {
   emitry.off();
 });
 
+test('test function emitry.off<name, handler>', () => {
+  const emitry = new Emitry();
+  const mockFn = jest.fn();
+  const mockFn2 = jest.fn();
+  
+  emitry.on('x', mockFn);
+  emitry.on('x', mockFn2);
+
+  emitry.emit('x', 'hahah');
+
+  emitry.off('x', mockFn2);
+
+  emitry.emit('x', 'fdffdfd');
+
+  expect(mockFn.mock.calls.length).toBe(2);
+  expect(mockFn2.mock.calls.length).toBe(1);
+});
+
 test('test function emitry.off<Array>', () => {
   const emitry = new Emitry();
   const mockFn = jest.fn();

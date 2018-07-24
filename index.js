@@ -54,9 +54,14 @@ class Emitry {
     });
   }
 
-  off(names) {
+  off(names, callback) {
     if(this.isArray(names)) {
       names.forEach(name => delete this.list[name]);
+    } else if(typeof names === 'string' && typeof callback === 'function') {
+      if (this.has(names)) {
+        let removedOne = this.list[names].findIndex(item => item.callback === callback);
+        ~removedOne && this.list[names].splice(removedOne, 1);
+      }
     } else {
       this.list = Object.create(null);
     }
